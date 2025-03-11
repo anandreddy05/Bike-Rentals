@@ -1,6 +1,6 @@
-# Bike Rentals
+# Bike Rentals Forecasting
 
-## Data Info
+## About The Data
 
 - instant: record index
 - dteday : date
@@ -26,3 +26,31 @@
 - casual: count of casual users
 - registered: count of registered users
 - cnt: count of total rental bikes including both casual and registered
+
+## Exploratory Data Analysis (EDA) Summary
+
+## Seasonal Trends
+
+1. Demand for Rental Bikes (y)
+
+- Highest demand is observed from May to October (spring to early fall).
+- Possible reasons: Warmer weather, longer daylight hours, and increased outdoor activities.
+- Recommendation: Further analyze by day of the week to see if weekends have higher demand.
+
+## Quarterly Demand
+
+- Q3 (July - September) sees the highest demand for rental bikes.
+- This aligns with peak summer, vacations, and increased outdoor movement.
+- Business Insight: Promotions and marketing should be focused on Q2-Q3.
+
+## AutoCorrelation Analysis (ACF)
+
+- Significant autocorrelation up to lag 50 → Strong influence of past values.
+- This means bike rentals are influenced by past trends over roughly 50 time units (days or hours, depending on granularity).
+- Implication: Forecasting models should include long-term dependencies.
+
+## Partial AutoCorrelation (PACF)
+
+- Significant correlation up to lag 6 → Short-term dependency (6 days).
+- This suggests a weekly pattern where rental trends reset every ~6 days.
+- Implication: A 7-day lag feature should be included in the forecasting model.
