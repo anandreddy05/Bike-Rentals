@@ -54,3 +54,16 @@
 - Significant correlation up to lag 6 → Short-term dependency (6 days).
 - This suggests a weekly pattern where rental trends reset every ~6 days.
 - Implication: A 7-day lag feature should be included in the forecasting model.
+
+## Holidays
+
+- Added Holidays as the holidays might affet the bike rentals as people might use more rental bikes at holidays.
+
+## Prophet Model
+
+### Key Takeaways
+
+- People rent more bikes on working days.
+- Bad weather (wind, humidity, rain) decreases rentals.
+- Higher temperatures encourage more bike usage.
+- Wind speed has the strongest negative effect (makes sense, as cycling in strong wind is difficult).
