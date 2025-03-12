@@ -2,46 +2,57 @@
 
 ============================
 
-## DataSet
+## Dataset Information
 
-- Hadi Fanaee-T
-- Laboratory of Artificial Intelligence and Decision - Support (LIAAD), University of Porto
-- INESC Porto, Campus da FEUP
-- Rua Dr. Roberto Frias, 378
-- 4200 - 465 Porto, Portugal
-===============================
+This dataset originates from the Capital Bikeshare system in Washington D.C., covering the years 2011 and 2012. The data has been aggregated at hourly and daily levels, with additional weather and seasonal information extracted from external sources.
 
-Bike-sharing rental process is highly correlated to the environmental and seasonal settings. For instance, weather conditions,
-precipitation, day of week, season, hour of the day, etc. can affect the rental behaviors. The core data set is related to  
-the two-year historical log corresponding to years 2011 and 2012 from Capital Bikeshare system, Washington D.C., USA which is 
-publicly available in <http://capitalbikeshare.com/system-data/>. We aggregated the data on two hourly and daily basis and then extracted and added the corresponding weather and seasonal information. Weather information are extracted from <http://www.freemeteo.com/>
+### Source:
 
-## About The Data
+`Author`: Hadi Fanaee-T (Laboratory of Artificial Intelligence and Decision-Support, University of Porto)
 
-- instant: record index
-- dteday : date
-- season : season (1:springer, 2:summer, 3:fall, 4:winter)
-- yr : year (0: 2011, 1:2012)
-- mnth : month ( 1 to 12)
-- hr : hour (0 to 23)
-- holiday : weather day is holiday or not
-- (extracted from <http://dchr.dc.gov/page/holiday-schedule/>)
-- weekday : day of the week
-- workingday : if day is neither weekend nor holiday is 1, otherwise is 0.
+- `Weather Data`: Extracted from freemeteo.com
 
-## weathersit
+- `Bike Sharing Data`: Available at Capital Bikeshare System Data
 
-- 1: Clear, Few clouds, Partly cloudy, Partly cloudy
-- 2: Mist + Cloudy, Mist + Broken clouds, Mist + Few clouds, Mist
-- 3: Light Snow, Light Rain + Thunderstorm + Scattered clouds, Light Rain + Scattered clouds
-- 4: Heavy Rain + Ice Pallets + Thunderstorm + Mist, Snow + Fog
-- temp : Normalized temperature in Celsius. The values are divided to 41 (max)
-- atemp: Normalized feeling temperature in Celsius. The values are divided to 50 (max)
-- hum: Normalized humidity. The values are divided to 100 (max)
-- windspeed: Normalized wind speed. The values are divided to 67 (max)
-- casual: count of casual users
-- registered: count of registered users
-- cnt: count of total rental bikes including both casual and registered
+### About the Data
+
+The dataset includes multiple features influencing bike rental demand, such as date, season, weather conditions, and user type (casual vs registered users).
+
+Key Features:
+
+`instant`: Record index
+
+`dteday`: Date
+
+`season`: Season (1 = Spring, 2 = Summer, 3 = Fall, 4 = Winter)
+
+`yr`: Year (0 = 2011, 1 = 2012)
+
+`mnth`: Month (1 to 12)
+
+`hr`: Hour of the day (0 to 23)
+
+`holiday`: Whether the day is a holiday (1 = Yes, 0 = No)
+
+`weekday`: Day of the week
+
+`workingday`: Whether the day is a working day (1 = Yes, 0 = No)
+
+`weathersit`: Weather condition (1 = Clear, 4 = Severe Weather)
+
+`temp`: Normalized temperature (divided by max 41°C)
+
+`atemp`: Normalized perceived temperature (divided by max 50°C)
+
+`hum`: Normalized humidity (divided by max 100%)
+
+`windspeed`: Normalized wind speed (divided by max 67)
+
+`casual`: Number of casual users
+
+`registered`: Number of registered users
+
+`cnt`: Total number of bike rentals (casual + registered users)
 
 ## Exploratory Data Analysis (EDA) Summary
 
@@ -77,9 +88,58 @@ publicly available in <http://capitalbikeshare.com/system-data/>. We aggregated 
 
 ## Prophet Model
 
-### Key Takeaways
+### Key Insights from Forecasting
 
-- People rent more bikes on working days.
-- Bad weather (wind, humidity, rain) decreases rentals.
-- Higher temperatures encourage more bike usage.
-- Wind speed has the strongest negative effect (makes sense, as cycling in strong wind is difficult).
+- Higher rentals on working days (commuters using bikes for work travel).
+
+- Bad weather conditions (wind, humidity, rain) decrease rentals.
+
+- Higher temperatures encourage bike usage.
+
+- Wind speed has the strongest negative impact (logical, as cycling against strong wind is difficult).
+
+## How to run
+
+Create a Virtual Environment (Recommended)
+
+```bash
+python -m venv venv
+```
+
+activate the venv
+
+```bash
+venv\Scripts\activate
+```
+
+Clone the repository
+
+```bash
+git clone https://github.com/anandreddy05/Bike-Rentals.git
+```
+
+Navigate to the Project Directory
+
+```bash
+cd Bike_Rentals
+```
+
+Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+## Future Improvements
+
+Feature Engineering: Add external factors like traffic data.
+
+Deep Learning Models: Compare Prophet results with LSTMs.
+
+Hyperparameter Tuning: Optimize changepoint and seasonal settings.
+
+Deployment: Convert the model into an interactive web app.
+
+## Conclusion
+
+This project provides valuable insights into bike rental trends using Prophet time series forecasting. By incorporating seasonal, weather, and autocorrelation patterns, we can optimize bike availability and improve user experience.
